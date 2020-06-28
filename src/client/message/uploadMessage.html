@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>upload meassage</title>
+  
+    <link rel="stylesheet" href="https://cdn.cocreate.app/CoCreate.min.css" type="text/css" />
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/99ba925095.js"></script> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  
+  </head>
+  
+  <body>
+        <form>
+             <input type="text" data-mail_message="user" placeholder='User_ID' class="floating-label_field">
+             <input type="text" data-mail_message="mailbox" placeholder='Mailbox_ID' class="floating-label_field">
+             From
+             <div data-mail_message="from" class="select--field sortable floating-label_field" placeholder="From">
+            
+              <input class="option-search" placeholder="Search">
+ 
+              <ul class="selectable--list cocreate-scroll">
+				<li class="selectable" data-value="value 1">
+				  <h3 data-from="name">Joe Zertz</h3>
+				  <h5 data-from="address">joe@gmail.com</h5>
+				</li>
+				<li class="selectable" data-value="value 2">
+				  <h3 data-from="name">Lee</h3>
+				  <h5 data-from="address">lee@gmail.com</h5>
+				</li>
+				<li class="selectable" data-value="value 3">
+				  <h3 data-from="name">Frank</h3>
+				  <h5 data-from="address">frank@gmail.com</h5>
+				</li>
+              </ul>
+              <input type="hidden" id="from_val" data-mail_message="from_val" >
+            </div>   
+             
+             To
+             
+            <div data-mail_message="to" class="select--field sortable floating-label_field" placeholder="To" multiple>
+             
+              <input class="option-search" placeholder="Search">
+ 
+              <ul class="selectable--list cocreate-scroll">
+				<li class="selectable" data-value="value 1">
+				  <h3 data-to="name">Joe Zertz</h3>
+				  <h5 data-to="address">joe@gmail.com</h5>
+				</li>
+				<li class="selectable" data-value="value 3">
+				  <h3 data-to="name">Frank</h3>
+				  <h5 data-to="address">frank@gmail.com</h5>
+				</li>
+              </ul>
+              <input type="hidden" id="to_val" data-mail_message="to_val" >
+            </div>             
+             
+             Subject
+             <input type="text" data-mail_message="subject" placeholder='Subject'>
+             <button class ="emailUploadMessageBtn">Upload</button>
+        </form>
+
+  <script>
+    var config = {
+      apiKey: 'c2b08663-06e3-440c-ef6f-13978b42883a',
+      securityKey: 'f26baf68-e3a9-45fc-effe-502e47116265',
+      organization_Id: '5de0387b12e200ea63204d6c'
+    }
+    
+    var to = [];
+    var from = {};
+    var btn = document.getElementsByTagName('button')[0];
+    btn.addEventListener('click',function(){
+        var selectedOption = document.getElementsByClassName('selected');
+        
+        for(let i=0; i<selectedOption.length; i++)
+        {
+            let toKey = [];
+            let toValue = [];
+            let toObj = {};
+            
+            let fromKey = [];
+            let fromValue = [];
+            
+            for(let j=0; j<selectedOption[i].children.length; j++)
+            {
+                if(selectedOption[i].children[j].attributes.hasOwnProperty('data-to'))
+                {
+                    toKey.push(selectedOption[i].children[j].attributes[0].value);
+                    toValue.push(selectedOption[i].children[j].textContent);
+                    
+                }
+                else if(selectedOption[i].children[j].attributes.hasOwnProperty('data-from'))
+                {
+                    fromKey.push(selectedOption[i].children[j].attributes[0].value);
+                    fromValue.push(selectedOption[i].children[j].textContent);
+                }
+            }
+            // to object array
+            if(toKey.length != 0)
+            {
+                for(let k=0; k< toKey.length; k++){
+                    toObj[toKey[k]] = toValue[k];
+                }
+                to.push(toObj)
+            }
+                
+            // from obj
+            if(fromKey.length != 0)
+            {
+               for(let k=0; k< fromKey.length; k++){
+                    from[fromKey[k]] = fromValue[k];
+                } 
+            }
+            
+        }
+    console.log(from,to)
+    
+    document.getElementById('from_val').value = JSON.stringify(from);
+    document.getElementById('to_val').value = JSON.stringify(to);
+    console.log(JSON.stringify(from),JSON.stringify(to))
+    })
+  </script>
+
+<!--<script src="https://server.cocreate.app/CoCreateJS/src/CoCreate.js"></script>-->
+<script src="https://server.cocreate.app/CoCreateJS/dist/CoCreate.min.lee.js"></script>
+    <script src="https://cdn.cocreate.app/CoCreateUI.min.js"></script>
+
+<script src="https://server.cocreate.app/CoCreate-components/CoCreate-select/CoCreate-select.js"></script>
+<script src="../../js/Cocreate-APISocket.js"></script>
+<script src="../../js/Cocreate-wildduck-message.js"></script>
+    
+    </body>
+</html>
