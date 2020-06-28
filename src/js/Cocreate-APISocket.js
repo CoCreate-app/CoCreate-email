@@ -5,14 +5,20 @@ var CocreateAPiSocket = function() {
         this.urlAction = '/api/management/email';
         this.url = this.server+this.urlAction;
         */
-        
+        this.req_socket = 'email';
         this.init();
 };
 
 CocreateAPiSocket.prototype.init = function (){
+    let _this = this;
     //Actions BTNS 
     console.log('init .. ')
     this.actionsBtn();
+    console.log("SocketOn Client -> ",this.req_socket)
+    CoCreateSocket.listen(this.req_socket,data=>{
+        console.log("REsponseSocket",data);
+        _this.setResult(data);
+    })
 }
 
 CocreateAPiSocket.prototype.actionsBtn = function(){
@@ -61,7 +67,7 @@ CocreateAPiSocket.prototype.click_btn = function(event){
         let dataToSend = that.getDataJSON(btn,that);
         dataToSend['type'] = selector;
         //that.socket(selector,dataToSend)
-        that.socket(dataToSend)
+        that.socket(dataToSend,that)
     }
 
 CocreateAPiSocket.prototype.getDataJSON = function(btn,that){
@@ -74,16 +80,20 @@ CocreateAPiSocket.prototype.getDataJSON = function(btn,that){
     return data;
 }
 
-CocreateAPiSocket.prototype.socket = function(data){ 
+CocreateAPiSocket.prototype.setResult = function(data) {
+}
+
+CocreateAPiSocket.prototype.socket = function(data,that){ 
     console.log(".... Sending Request Socket to endPint [email].....");
     console.log(data);
-    socket.emit('email',data);
+    //socket.emit('email',data);
+    CoCreateSocket.send(that.req_socket,data);
     console.log(".... Send to socket .....");
 }
 
 
 /*TEMP only to see result */
 
-socket.on('email',function(data){
+/*socket.on('email',function(data){
         console.log("REsponseSocket",data);
-})
+})*/
