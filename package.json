@@ -1,8 +1,8 @@
 {
-  "name": "@cocreate/boilerplate",
+  "name": "@cocreate/email",
   "version": "1.0.0",
-  "description": "A simple boilerplate component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API.",
-  "keywords": ["boilerplate","cocreate","low-code-framework","no-code-framework","cocreatejs","cocreatejs-component","cocreate-framework","no-code","low-code","collaborative-framework","realtime","realtime-framework","collaboration","shared-editing","html5-framework","javascript-framework"],
+  "description": "A simple email component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API.",
+  "keywords": ["email","cocreate","low-code-framework","no-code-framework","cocreatejs","cocreatejs-component","cocreate-framework","no-code","low-code","collaborative-framework","realtime","realtime-framework","collaboration","shared-editing","html5-framework","javascript-framework"],
   "publishConfig": {
     "access": "public"
   },
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CoCreate-app/CoCreate-boilerplate.git"
+    "url": "git+https://github.com/CoCreate-app/CoCreate-email.git"
   },
   "author": "CoCreate LLC",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CoCreate-app/CoCreate-boilerplate/issues"
+    "url": "https://github.com/CoCreate-app/CoCreate-email/issues"
   },
-  "homepage": "https://cocreate.app/docs/boilerplate",
+  "homepage": "https://cocreate.app/docs/email",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
