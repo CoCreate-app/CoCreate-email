@@ -1,47 +1,43 @@
 module.exports = {
-    config: {
-        apiKey: "c2b08663-06e3-440c-ef6f-13978b42883a",
-        securityKey: "f26baf68-e3a9-45fc-effe-502e47116265",
-        organization_Id: "5de0387b12e200ea63204d6c",
-        host: "server.cocreate.app:8088"
+    "config": {
+        "apiKey": "2061acef-0451-4545-f754-60cf8160",
+        "organization_Id": "5ff747727005da1c272740ab",
+        "host": "general.cocreate.app"
     },
- 
-    sources: [{
-            path: "./docs/index.html",
-            collection: "files",
-            document_id: "6027120e5e697f4f26a98a53",
-            key: "html",
-            data:{
-                name: "email Doc",
-            }
-        },
-    ],
-   
-    crud: [{
-            collection: "routes",
-            document_id: "6027120e5e697f4f26a98a52",
-            data:{
-                collection: "files",
-                document_id: "6027120e5e697f4f26a98a53",
-                name: "html",
-                domains: ["cocreate.app", "server.cocreate.app", "ws.cocreate.app"],
-                route: "/docs/email",
+    
+    "sources": [{
+            "entry": "./docs/index.html",
+            "collection": "files",
+            "document_id": "6027120e5e697f4f26a98a53",
+            "key": "src",
+            "data":{
+                "name": "index.html",
+                "path": "/docs/email/index.html",
+                "domains": [
+                    "cocreate.app",
+                    "general.cocreate.app"
+                ],
+                "directory": "/docs/email",
+                "content-type": "text/html",
+                "public": "true",
+                "website_id": "614298c2829b690010a5c031"
             }
         }
     ],
-    
-    extract: {
-        directory: "./src/",
-        extensions: [
-            "js",
-            "css",
-            "html"
-        ],
-        ignores: [
-            "node_modules",
-            "vendor",
-            "bower_components",
-            "archive"
-        ],
-    }
+
+	"extract": {
+		"directory": "./src/",
+		"extensions": [
+			"js",
+			"css",
+			"html"
+		],
+		"ignores": [
+			"node_modules",
+			"vendor",
+			"bower_components",
+			"archive"
+		]
+	}
 }
+
